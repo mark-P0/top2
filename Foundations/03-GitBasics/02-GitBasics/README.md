@@ -19,3 +19,35 @@ git push -u github main
     > Branch 'main' set up to track remote branch 'main' from 'github'.
   - **Upstream**: Remote repositories, i.e. the central source of truth
   - **Downstream**: Local repositories, i.e. local machines, developers, etc.
+
+### Git Workflow
+
+I prefer looking at the **Source Control** tab of VSCode (supercharged with [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens))
+
+Shown in the guide are the command-line equivalents:
+
+```bash
+## Show the status of the project files
+## e.g. which are "modified", "staged", etc.
+git status
+
+## Moves changed files into staging area
+## i.e. from "modified" to "staged"
+git add <FILENAME>
+git add -A  # Stages ALL "modified" files
+git add .   # Stage files in the current dir
+
+## Commits staged changes into Git database
+## i.e. from "staged" into "committed"
+git commit -m "Enter commit message here"
+git commit  # Will prompt for a message from default text editor
+
+## Shows commit history
+## Press "q" to exit
+git log
+```
+
+I have plenty of experience already with some of the basics:
+
+- File flow of modified → staged → committed
+- Pushing onto the remote repository
