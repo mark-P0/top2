@@ -5,5 +5,5 @@
 .exclude
 
 ## Nested repos
-Foundations/04-HTMLFoundations/first-webpage
-# Foundations/04-HTMLFoundations/first-webpage/*
+Foundations/04-HTMLFoundations/first-website
+# Foundations/04-HTMLFoundations/first-website/*
