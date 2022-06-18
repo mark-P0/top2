@@ -5,6 +5,7 @@
 - This is
 - an unordered list
 - in Markdown lmao
+- HTML tag is `<ul>`, standing for **u**nordered **l**ist
 
 ```html
 <ul>
@@ -19,6 +20,7 @@
 1. This is
 2. an ordered list
 3. in Markdown lol
+4. HTML tag is `<ol>`, standing for **o**rdered **l**ist
 
 ```html
 <ol>
