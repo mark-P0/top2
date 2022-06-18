@@ -8,6 +8,12 @@ Particularly useful in this section was:
   - Abbreviations
   - Wrapping a selection with an Emmet abbreviation
 
+## Nesting and Indentation
+
+- Used to define parent, child, and sibling relationships
+- Defines HTML structure
+- Important for CSS and JS
+
 <!--
 ## Paragraphs
 
