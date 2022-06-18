@@ -11,3 +11,14 @@
   - File path to another webpage _relative_ to the page on which the link is
 
 > Images also use absolute and relative links for displaying graphics on a webpage
+
+## File Structure
+
+```
+website-folder/
+├─ css/
+├─ js/
+├─ img/
+├─ index.html
+├─ ...other HTML files
+```
