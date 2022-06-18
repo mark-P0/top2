@@ -7,6 +7,7 @@ Particularly useful in this section was:
 - Emmet
   - Abbreviations
   - Wrapping a selection with an Emmet abbreviation
+- Finding parallels of Markdown features in HTML
 
 ## Nesting and Indentation
 
