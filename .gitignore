@@ -3,3 +3,6 @@
 
 ## Other miscellaneous files used locally are stored here
 .exclude
+
+## Project subrepos
+Foundations/04-HTMLFoundations/08-ProjectRecipes/basic-recipe-website
