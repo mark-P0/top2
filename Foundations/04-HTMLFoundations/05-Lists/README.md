@@ -29,3 +29,5 @@
   <li>in regular HTML</li>
 </ol>
 ```
+
+**List items** have the tag `<li>` for **l**ist **i**tems.
