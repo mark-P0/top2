@@ -1,0 +1,38 @@
+* {
+  /* "HTML Preview" extension has gray-ish text color by default */
+  color: black;
+}
+
+.element-odd {
+  /*  Light red/pink background
+   *
+   *  0° = Red
+   *  80% = Light red (pink-ish)
+   *
+   *  300° is magenta ("actual" pink)
+   *
+   *  Color wheel reference:
+   *  https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsl
+   */
+  background-color: hsl(0, 100%, 80%);
+  font-family: 'Verdana', 'DejaVu Sans', sans-serif;
+}
+
+#element-2 {
+  color: rgb(0, 0, 255);
+  font-size: 36px;
+}
+
+.element-3 {
+  font-size: 24px;
+}
+
+#element-4 {
+  /*  Light green background
+   *  120° is green
+   *  75% is light
+   */
+  background-color: hsl(120, 100%, 75%);
+  font-size: 24px;
+  font-weight: bold;
+}
