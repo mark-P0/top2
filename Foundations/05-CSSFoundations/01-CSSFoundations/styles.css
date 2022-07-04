@@ -1,0 +1,60 @@
+/*  Universal Selector
+ *
+ *  Applies to ALL elements
+ */
+* {
+  color: purple;
+}
+
+/*  Type Selector
+ *
+ *  Applies to all elements of the specified type
+ *  Below will apply to all `div` elements
+ */
+div {
+  color: white;
+}
+
+/*  */
+.alert-text {
+  color: red;
+}
+
+.alert-text-bold {
+  font-weight: bold;
+}
+
+/*  */
+#title {
+  background-color: red;
+}
+
+/*  */
+#element-id {
+  background-color: black;
+}
+
+/*  */
+.read,
+.unread {
+  color: white;
+  background-color: black;
+}
+
+.read {
+  /* several unique declarations */
+}
+
+.unread {
+  /* several unique declarations */
+  font-weight: bold;
+}
+
+/*  */
+.subsection.header {
+  color: red;
+}
+
+.subsection#preview {
+  color: blue;
+}
