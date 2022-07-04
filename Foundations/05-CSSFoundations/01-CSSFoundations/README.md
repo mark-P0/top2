@@ -336,6 +336,7 @@ div {
       - `rem` is preferable for accessbility and respecting user preferences
     - Percentages, e.g. `font-size: 25%;`
     - Note that there are no separator between the value and the unit
+- https://www.youtube.com/watch?v=N5wpD9Ov_To
 
 `font-weight`
 
@@ -365,6 +366,7 @@ div {
   ```
   - Its usually best to adjust `width` and let `height` adjust automatically
   - Horizontal scrolling is often frowned upon
+  - https://www.youtube.com/watch?v=N5wpD9Ov_To
 - Both `width` and `height` is also best to be specified for `<img>` elements, even if one of them won't be adjusted, in order to prevent random size changes in webpage content
 
 ## Cascade of CSS
