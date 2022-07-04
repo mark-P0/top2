@@ -1,0 +1,14 @@
+.button-dark {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.button-light {
+  background-color: hsl(60, 100%, 50%);
+}
+
+.button-dark,
+.button-light {
+  font-size: 28px;
+  font-family: 'Helvetica', 'Times New Roman', sans-serif;
+}
