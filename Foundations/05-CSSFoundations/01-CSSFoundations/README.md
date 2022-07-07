@@ -497,8 +497,141 @@ p {
   - Tedious and repetitive styling for each individual element, as needed
   - Inline CSS is most specific, overrides other rules, and may produce unexpected results
 
-<!--
+## Practice
 
-EOF
+1. Answers to CSS exercises are located at `./css-exercises` (relative to this document's directory)
+2. The styled recipe website is accessible at a [GitHub page](https://mark-p0.github.io/basic-recipe-website/). A landing page for different website versions is included.
 
--->
+## Knowledge Check
+
+- What are the main differences between external, internal, and inline CSS?
+
+  - External. Defined in a separate `.css` file, imported in the `.html` file
+
+    ```css
+    /* styles.css */
+
+    section {
+      color: gainsboro;
+    }
+    ```
+
+    ```html
+    <!-- index.html -->
+
+    <html>
+      <head>
+        ...
+
+        <!-- External CSS -->
+        <link rel="stylesheet" href="./styles.css" />
+      </head>
+
+      <body>
+        ...
+      </body>
+    </html>
+    ```
+
+  - Internal. Defined within the `.html` itself, inside a `<style>` element
+
+    ```html
+    <!-- index.html -->
+
+    <html>
+      <head>
+        ...
+
+        <!-- Internal CSS -->
+        <style>
+          section {
+            color: gainsboro;
+          }
+        </style>
+      </head>
+
+      <body>
+        ...
+      </body>
+    </html>
+    ```
+
+  - Inline. Defined as an attribute to the/an element itself
+
+    ```html
+    <!-- index.html -->
+
+    <html>
+      <head>
+        ...
+      </head>
+
+      <body>
+        ...
+        <!-- Inline CSS -->
+        <section style="color: gainsboro">...</section>
+        ...
+      </body>
+    </html>
+    ```
+
+- What is the syntax for class and ID selectors?
+
+  ```css
+  /* Class selector */
+  .some-reusable-class {
+    property: value;
+  }
+
+  /* ID selector */
+  #some-unique-id {
+    property: value;
+  }
+  ```
+
+- How would you apply a single rule to two different selectors?
+
+  ```css
+  /* Multiple selectors can be separated by commas */
+  .some-selector,
+  #some-other-selector,
+  div {
+    property: value;
+  }
+
+  /*  I prefer leaving a "throwaway" selector in-line with the block start
+      so that I can easily comment out selectors, like so:
+   */
+  .some-selector,
+  #some-other-selector,
+  /* div */
+  _ {
+    property: value;
+  }
+  ```
+
+- Given an element that has an id of `title` and a class of `primary`, how would you use both attributes for a single rule?
+  ```css
+  #title,
+  .primary,
+  _ {
+    property: value;
+  }
+  ```
+- What does the descendant combinator do?
+  - Selects elements which are children of a specified ancestor
+  ```html
+  <section class="parent">
+    <p class="children1">This would not be selected</p>
+    <p class="children2">This won't be, too</p>
+    <p class="children3">This would be selected</p>
+  </section>
+  ```
+  ```css
+  .parent .children3 {
+    property: value;
+  }
+  ```
+- Between a rule that uses one class selector and a rule that uses three type selectors, which rule has the higher specificity?
+  - The first rule
+  - Even if the second rule selects more elements, classes are simply more specific than types
