@@ -5,7 +5,74 @@ body {
   margin: 0;
   overflow: hidden;
   font-family: Roboto, sans-serif;
+
+  /*  */
+
+  display: flex;
+  flex-direction: column;
 }
+
+.content {
+  flex: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  /* margin-bottom: 8%; */
+}
+
+button {
+  padding: 8px 16px;
+}
+
+.header,
+.footer,
+_ {
+  padding: 16px;
+  padding-top: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left-links,
+.right-links,
+_ {
+  display: flex;
+  gap: 16px;
+}
+
+.footer {
+  background-color: #eee;
+}
+
+/*  */
+
+ul {
+  /* Remove list item bullets */
+  list-style-type: none;
+
+  /* Remove default paddings and margins */
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  /* Remove link underlines */
+  text-decoration: none;
+
+  font-size: 0.9rem;
+  color: #555;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/*  */
 
 img {
   width: 600px;
