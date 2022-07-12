@@ -1,6 +1,22 @@
-.header  {
+/*  Difference(s) with `solution.css`
+ *  Header `justify-content` is `space-between`
+ *  This eliminates the need for pushing the sides of the logo
+ *  [Why did I not think of that :)]
+ */
+
+.header {
   font-family: monospace;
   background: papayawhip;
+
+  /*  */
+
+  /* Enable flexbox on header items, and center them */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Add padding around header */
+  padding: 8px;
 }
 
 .logo {
@@ -9,11 +25,38 @@
   color: tomato;
   background: white;
   padding: 4px 32px;
+
+  /*  */
+
+  /*  Push the sides of the logo as much as possible
+      This is tested using browser devtools by going into "Responsive Design Mode"
+      and setting an arbitrarily wide screen size
+   */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 ul {
   /* this removes the dots on the list items*/
   list-style-type: none;
+
+  /*  */
+
+  /* Remove the default margins and spacings of `ul` elements */
+  margin: 0;
+  padding: 0;
+
+  /*  Enable flexbox on list items
+      My first attempt was to use `justify-content` to add spaces between the list flex items
+      However, this does not work, and I can't figure out why
+      I remembered `gap` as an alternative, and sure enough it does work
+
+      Another way is to add margins around the list items, and remove the header padding
+      But there is no declared `li` selector, and so this approach was not used
+   */
+  display: flex;
+  /* justify-content: space-around; */
+  gap: 16px;
 }
 
 a {
