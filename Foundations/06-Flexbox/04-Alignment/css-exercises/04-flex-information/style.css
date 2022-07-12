@@ -1,6 +1,36 @@
 body {
   font-family: 'Courier New', Courier, monospace;
+
+  /*  */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }
+
+section {
+  display: flex;
+  gap: 32px;
+
+  /* background-color: brown; */
+}
+
+article {
+  /* As flex item */
+  flex: auto;
+  max-width: 200px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+article .text {
+  text-align: center;
+}
+
+/*  */
 
 img {
   width: 100px;
