@@ -4,3 +4,5 @@ templating
 concat
 # whitespace
 whitespaces
+substr
+Replit
