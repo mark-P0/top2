@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function getRandomIntegerDigit() {
+        return Math.floor(Math.random() * 10);
+      }
+
+      function getRandomInteger(maxDigitCt = 2) {
+        const expTerm = 10 ** ((getRandomIntegerDigit() % maxDigitCt) + 1);
+
+        return Math.floor(Math.random() * expTerm);
+      }
+
+      /*  */
+
+      const results = {};
+
+      /*  1. Write a function called `add7` that takes
+       *     one number and returns that `number + 7`.
+       */
+      function add7(addend) {
+        return addend + 7;
+      }
+      const randomAddend = getRandomInteger();
+      results[1] = {
+        function: add7,
+        input: randomAddend,
+        result: add7(randomAddend),
+      };
+
+      /*  2. Write a function called `multiply` that takes
+       *     2 numbers and returns their product.
+       */
+      function multiply(num1, num2) {
+        return num1 * num2;
+      }
+      const randomTerm1 = getRandomInteger();
+      const randomTerm2 = getRandomInteger();
+      results[2] = {
+        function: multiply,
+        input: [randomTerm1, randomTerm2],
+        result: multiply(randomTerm1, randomTerm2),
+      };
+
+      /*  3. Write a function called `capitalize` that takes
+       *     a string and returns that string with only the
+       *     first letter capitalized. Make sure that it can
+       *     take strings that are lowercase, UPPERCASE or BoTh.
+       */
+      function capitalize(string) {
+        const firstChar = string[0].toUpperCase();
+        const remainingChars = string.slice(1).toLowerCase();
+        return firstChar + remainingChars;
+      }
+      const randomString = ['lowercase', 'UPPERCASE', 'BoTh'][
+        getRandomInteger() % 3
+      ];
+      results[3] = {
+        function: capitalize,
+        input: randomString,
+        result: capitalize(randomString),
+      };
+
+      /*  4. Write a function called `lastLetter` that takes a string
+       *     and returns the very last letter of that string:
+       */
+      function lastLetter(string) {
+        return string.slice(-1);
+      }
+      const randomString2 = ['lowercase', 'UPPERCASE', 'BoTh', 'abcd'][
+        getRandomInteger() % 4
+      ];
+      results[4] = {
+        function: lastLetter,
+        input: randomString2,
+        result: lastLetter(randomString2),
+      };
+
+      /*  */
+
+      console.table(results);
+    </script>
+  </body>
+</html>
