@@ -7,3 +7,5 @@ whitespaces
 substr
 Replit
 IIFE
+pseudocode
+pseudocoding
