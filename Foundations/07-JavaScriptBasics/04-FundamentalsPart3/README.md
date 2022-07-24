@@ -193,3 +193,88 @@ checkPermission(...) // checks a permission, returns true/false
 - If you describe a function and you find yourself using "and", it's usually a sign that the function does too many things
   > This function does something **and** another thing
   - Break this function down into even smaller functions!
+
+## Callbacks
+
+```js
+function showResults(isCorrect, callbackCorrect, callbackIncorrect) {
+  if (isCorrect) {
+    callbackCorrect();
+  } else {
+    callbackIncorrect();
+  }
+}
+
+function showRight() {
+  console.log('You are correct!');
+}
+
+function showWrong() {
+  console.log('That is wrong.');
+}
+
+showResults(true, showRight, showWrong);
+showResults(false, showRight, showWrong);
+```
+
+- Functions are _first-class citizens_
+- They can be passed around into _other functions_ just like variables
+- i.e. they are also "values"
+  - **Variables** represent data
+  - **Functions** represent actions
+
+## Knowledge Check
+
+- What are functions useful for?
+
+  - Functions are useful for bundling repeatable lines of code together
+  - It is also useful for bundling lines of code whose behavior can be modified by an identifiable set of common fields
+
+- How do you invoke a function?
+
+  <!-- prettier-ignore -->
+  ```js
+  function myFunction() {
+    console.log('This is my function!');
+  }
+
+  myFunction;   // Gives the specifications of the function itself;
+  myFunction(); // 'This is my function!'
+  ```
+
+  - By appending parentheses `()` on the function name
+
+- What are anonymous functions?
+
+  - Anonymous functions are function blocks with **no name**
+  - They were traditionally used as defining callback behavior
+
+- What is function scope?
+
+  - The block of the function definition
+  - The function body
+  - Enclosed by braces `{}`
+  - The area in which the function lines are defined
+
+- What are return values?
+
+  - The final value to which functions evaluate to
+  - After invoking / calling / running a function, the invocation expression will essentially be replaced by its return value
+
+- What are arrow functions?
+
+  ```js
+  (parameters) => {
+    /* function statements */
+  };
+
+  (parameters) => (
+    /* single expression body */
+  );
+  ```
+
+  - Function expressions (like anonymous functions)
+  - Essentially a shorthand for anonymous functions
+  - More concise function definition; only requires the parameter list, the function block (or single expression), and an arrow `=>` separating them
+  - Arguably a more readable function syntax
+  - May be referred to as _lambda functions_ in other languages (C#, Python), which is specifically synonymous to _anonymous functions_
