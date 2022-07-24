@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <script>
+      function checkAge(age) {
+        if (age > 18) {
+          return true;
+        } else {
+          return confirm('Did parents allow you?');
+        }
+      }
+
+      /*  */
+
+      function checkAgeQuestionMark(age) {
+        return age > 18 ? true : confirm('Did parents allow you?');
+      }
+
+      function checkAgeOR(age) {
+        return age > 18 || confirm('Did parents allow you?');
+      }
+
+      /*  */
+
+      let input = Number.parseInt(prompt('Enter your age:'));
+      // checkAge(input);
+      checkAgeQuestionMark(input);
+      checkAgeOR(input);
+    </script> -->
+    <!-- <script>
+      function min(a, b) {
+        return a < b ? a : b;
+      }
+
+      let _ = [
+        /*  */
+        min(2, 5) == 2,
+        min(3, -1) == -1,
+        min(1, 1) == 1,
+      ];
+      console.log(_);
+    </script> -->
+    <script>
+      function main() {
+        function pow(x, n) {
+          if (n < 0) return undefined;
+          if (n === 0) {
+            if (x === 0) return undefined;
+            else return 1;
+          }
+
+          // let result = 1;
+          // for (let _ = 0; _ < n; _++) result *= x;
+          // return result;
+
+          return x ** n;
+        }
+
+        let userX = Number.parseInt(prompt('x? (base)')) || 1;
+        let userN = Number.parseInt(prompt('n? (exponent)')) || 1;
+
+        if (userN < 1) {
+          alert(`Input n = ${userN} not supported; please use only values >=1`);
+          return;
+        }
+
+        let result = pow(userX, userN);
+
+        alert(`${userX} ** ${userN} = ${result}`);
+
+        let _ = [
+          userX,
+          userN,
+          result,
+          /*  */
+          pow(3, 2) === 9,
+          pow(3, 3) === 27,
+          pow(1, 100) === 1,
+        ];
+        console.log(_);
+      }
+
+      main();
+    </script>
+  </body>
+</html>
