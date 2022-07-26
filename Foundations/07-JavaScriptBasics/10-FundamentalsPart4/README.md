@@ -392,3 +392,291 @@ console.log(points);          // [ 100, 40, 25, 10, 5, 1 ]
     - Ascending order
   - `(a, b) => b - a`
     - Descending order
+
+## Loops
+
+- Repeats one or more lines of codes over and over again
+- Until a stopping condition is met, or is explicitly broken
+
+### Approaches
+
+#### `for` loop
+
+<!-- prettier-ignore -->
+```js
+/* Blueprint */
+for (initializer; condition; final-expression) {
+  // code to run
+}
+
+/* Example */
+for (let idx = 0; idx < array.length; idx++) {
+  /* Loop statements */
+}
+```
+
+- Standard `for` loop syntax
+- Similar across several languages
+- Loop iteration flow:
+  - Test / Evaluate the `condition`
+  - If `condition` is `true`, execute the loop body
+  - Execute the `final-expression` once
+- `for` loop flow:
+  - Execute `initializer` once
+  - Start first iteration
+  - Continue doing iterations until `condition` becomes `false`
+
+#### `for`-`of` loop
+
+```js
+for (const element of iterable) {
+  /* Loop statements */
+}
+```
+
+- Repeats lines of codes for each member of an iterable
+- e.g. array elements
+
+#### `.map()`
+
+```js
+const cats = ['Leopard', 'Serval', 'Jaguar', 'Tiger', 'Caracal', 'Lion'];
+
+cats.map((cat) => cat.toUpperCase());
+// [ "LEOPARD", "SERVAL", "JAGUAR", "TIGER", "CARACAL", "LION" ]
+```
+
+- Array method
+- Apply a callback function to each array element
+- Creates a new array using the return values of each function call
+- Essentially, transforms each element of the array into a new one
+- "Maps" them to a new value
+
+#### `.filter()`
+
+```js
+const cats = ['Leopard', 'Serval', 'Jaguar', 'Tiger', 'Caracal', 'Lion'];
+
+cats.filter((cat) => cat.startsWith('L'));
+// [ "Leopard", "Lion" ]
+```
+
+- Array method
+- Apply a callback function to each array element that returns a boolean value
+  - `true` or `false`
+- Creates a new array whose values are those for which the callback function returned `true`
+- i.e. callback function is a tester which filters the array
+  - Allows only satisfactory elements to be part of the new array
+
+#### `while` loops
+
+<!-- prettier-ignore -->
+```js
+initializer;
+while (condition) {
+  // code to run
+
+  final-expression;
+}
+```
+
+<!-- prettier-ignore -->
+```js
+/* `for` loop structure */
+for (initializer; condition; final-expression) {
+  // code to run
+}
+```
+
+- Simplest form of loop
+- Can run forever
+  ```js
+  while (true) {
+    /* perpetual loop */
+  }
+  ```
+
+#### `do`-`while` loops
+
+<!-- prettier-ignore -->
+```js
+initializer;
+do {
+  // code to run
+
+  final-expression;
+} while (condition)
+```
+
+- Just like a `while` loop
+- Guaranteed to run at least once, even if `condition` is immediately `false`
+
+### Altering loop flow
+
+A normal loop would be something like the following:
+
+```js
+const cats = ['Leopard', 'Serval', 'Jaguar', 'Tiger', 'Caracal', 'Lion'];
+
+for (const cat of cats) {
+  console.log(cat); // 'Leopard' | 'Serval' | 'Jaguar' | 'Tiger' | 'Caracal' | 'Lion'
+}
+```
+
+#### `break`
+
+```js
+for (const cat of cats) {
+  if (cat.startsWith('J')) {
+    break; // Early exit
+  }
+  console.log(cat); // 'Leopard' | 'Serval'
+}
+```
+
+- The `break` keyword is used to exit a loop before it naturally terminates
+- Usually used inside a conditional block to test for a condition that would terminate the loop
+- In the example above, once the element `'Jaguar'` is reached, the breaking condition is met, thus the loop ends and the remaining elements, including `'Jaguar'` are not printed anymore
+
+#### `continue`
+
+```js
+for (const cat of cats) {
+  if (cat.startsWith('L')) {
+    continue; // Skip
+  }
+  console.log(cat); // 'Serval' | 'Jaguar' | 'Tiger' | 'Caracal'
+}
+```
+
+- The `continue` keyword is used to skip iterations from the loop body
+- Also usually used inside conditional blocks
+- In the example above, all elements that start with `'L'` (i.e. `'Leopard'`, `'Lion'`) are skipped from logging
+
+### Active Learning
+
+#### Launch countdown
+
+```js
+let output = document.querySelector('.output');
+output.innerHTML = '';
+
+let i = 10;
+while (i >= 0) {
+  // console.log(i);
+
+  const para = document.createElement('p');
+
+  /* prettier-ignore */
+  para.textContent = (
+    (i === 10) ? 'Countdown 10'
+    : (i === 0) ? 'Blast off!'
+    : `${i}...`
+  );
+
+  output.appendChild(para);
+
+  i--;
+}
+```
+
+#### Filling in a guest list
+
+```js
+/* prettier-ignore */
+const people = ['Chris', 'Anne', 'Colin', 'Terri', 'Phil', 'Lola', 'Sam', 'Kay', 'Bruce'];
+
+const admitted = document.querySelector('.admitted');
+const refused = document.querySelector('.refused');
+admitted.textContent = 'Admit: ';
+refused.textContent = 'Refuse: ';
+
+// loop starts here
+
+const blacklist = ['Phil', 'Lola'];
+
+for (const person of people) {
+  const personString = `${person}, `;
+
+  if (blacklist.includes(person)) {
+    refused.textContent += personString;
+    continue;
+  }
+  admitted.textContent += personString;
+}
+
+admitted.textContent = admitted.textContent.slice(0, -2);
+refused.textContent = refused.textContent.slice(0, -2);
+```
+
+### Which loop to use?
+
+- `for`-`of`
+
+  - If iterating through a given set of iterable, e.g. array
+  - Not as applicable when indices are needed
+  - Might also be worth considering `.map()` and `.filter()`
+
+- `for`
+
+  - For general looping
+  - Interchangeable with `while` loops, but `for` loops are generally safer as they have an explicit terminating condition in the syntax
+  - Use when indices are needed
+  - Replace more concise looping methods for performance purposes
+
+- `while` | `do`-`while`
+
+  - Use with great caution
+  - Terminating condition and/or expressions can be easy to forget to include
+
+## Knowledge Check
+
+- What is an array?
+
+  - A collection of [ideally closely] related values
+
+- What are arrays useful for?
+
+  - Looping
+  - Keeping variable namespace clean
+  - Maintaining order
+
+- How do you access an array element?
+
+  - By indexing using the braces `[]` syntax
+
+- How do you change an array element?
+
+  - By combination of indexing and assignment operator
+
+- What are some useful array properties?
+
+  - `.length`
+
+- What are some useful array methods?
+
+  - `.join()`
+  - `.slice()`
+  - `.sort()`
+  - `.push()`
+  - `.shift()`
+  - `.map()`
+  - `.filter()`
+  - `.reduce()`
+
+- What are loops useful for?
+
+  - Repeating actions over and over again until a terminating condition is met
+
+- What is the `break` statement?
+
+  - Allows loops to terminate early
+
+- What is the `continue` statement?
+
+  - Allows loops to skip iterations
+
+- What is the advantage of writing automated tests?
+
+  - Catch errors early and minimize them
+  - Allows developer to skip tedious use of application for testing
