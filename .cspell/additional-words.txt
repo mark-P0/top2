@@ -11,3 +11,4 @@ pseudocode
 pseudocoding
 subrepo
 subrepos
+instanceof
