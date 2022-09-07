@@ -13,3 +13,6 @@ subrepo
 subrepos
 instanceof
 BSON
+bulma
+preprocessors
+precompilers
