@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CSS Selector Playground</title>
+
+    <style>
+      /* div:nth-child(2n + 1), */
+      div:nth-child(2n),
+      /* div:nth-child(2n - 1), */
+      /* div:nth-child(odd), */
+      _ {
+        color: white;
+        background-color: green;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p>Emmet expression:</p>
+    <code> section#container>div*9>code{&lt;div$&gt;} </code>
+
+    <hr />
+
+    <section id="container">
+      <div><code>&lt;div1&gt;</code></div>
+      <div><code>&lt;div2&gt;</code></div>
+      <div><code>&lt;div3&gt;</code></div>
+      <div><code>&lt;div4&gt;</code></div>
+      <div><code>&lt;div5&gt;</code></div>
+      <div><code>&lt;div6&gt;</code></div>
+      <div><code>&lt;div7&gt;</code></div>
+      <div><code>&lt;div8&gt;</code></div>
+      <div><code>&lt;div9&gt;</code></div>
+    </section>
+  </body>
+</html>
