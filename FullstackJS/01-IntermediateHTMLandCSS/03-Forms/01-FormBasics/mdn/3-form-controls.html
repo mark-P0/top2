@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- prettier-ignore -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://unpkg.com/sanitize.css" />
+    <link rel="stylesheet" href="https://unpkg.com/sanitize.css/typography.css" />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/sanitize.css/forms.css" /> -->
+
+    <style>
+      html {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      body {
+        margin: 1rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 1rem 0.5rem gainsboro;
+        max-width: 42rem;
+      }
+
+      #sections {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      section {
+        border: 1px solid lightgray;
+        padding: 0 1rem;
+        padding-bottom: 1rem;
+        border-radius: 0.5rem;
+      }
+
+      .centered-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      fieldset {
+        padding: 1rem;
+      }
+
+      #bc1 fieldset,
+      #bc2 form,
+      #bc3 fieldset,
+      _ {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        gap: 0.5rem;
+      }
+
+      .aligned-input-labels {
+        display: flex;
+      }
+      .aligned-input-labels > label {
+        width: 5rem;
+      }
+    </style>
+
+    <title>Basic native form controls | The different form controls | MDN</title>
+  </head>
+
+  <body>
+    <h1>Basic native form controls</h1>
+
+    <div id="sections">
+      <section id="bc1">
+        <h2>Basic controls 1</h2>
+        <p>
+          This task starts you off nice and gently by asking you to create two
+          <code>&lt;input&gt;</code> elements, for a user's ID and password,
+          along with a submit button.
+        </p>
+
+        <div class="centered-container">
+          <form action="#" method="post">
+            <fieldset>
+              <div class="aligned-input-labels">
+                <label for="bc1-userid">User ID:</label>
+                <input type="text" name="bc1UserId" id="bc1-userid" />
+              </div>
+              <div class="aligned-input-labels">
+                <label for="bc1-userpw">Password:</label>
+                <input type="password" name="bc1UserPw" id="bc1-userpw" />
+              </div>
+              <button type="submit">Log in</button>
+            </fieldset>
+          </form>
+        </div>
+      </section>
+
+      <section id="bc2">
+        <h2>Basic controls 2</h2>
+        <p>
+          The next task requires you to create working sets of checkboxes and
+          radio buttons, from the provided text labels.
+        </p>
+
+        <div class="centered-container">
+          <form action="#" method="post">
+            <fieldset>
+              <legend>Who is your favorite pony?</legend>
+              <div>
+                <div>
+                  <!-- prettier-ignore -->
+                  <input type="radio" name="bc2Pony" id="bc2-pony-pinkie" checked />
+                  <label for="bc2-pony-pinkie">Pinkie Pie</label>
+                </div>
+                <div>
+                  <input type="radio" name="bc2Pony" id="bc2-pony-rainbow" />
+                  <label for="bc2-pony-rainbow">Rainbow Dash</label>
+                </div>
+                <div>
+                  <input type="radio" name="bc2Pony" id="bc2-pony-twilight" />
+                  <label for="bc2-pony-twilight">Twilight Sparkle</label>
+                </div>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Hotdog Preferences</legend>
+              <!-- prettier-ignore -->
+              <div>
+      <div>
+      <input type="checkbox" name="bc2Hotdog" id="bc2-hotdog-vegan" />
+      <label for="bc2-hotdog-vegan">Vegan</label>
+      </div>
+      <div>
+      <input type="checkbox" name="bc2Hotdog" id="bc2-hotdog-onion" />
+      <label for="bc2-hotdog-onion">Onion</label>
+      </div>
+      </div>
+            </fieldset>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="bc3">
+        <h2>Basic controls 3</h2>
+        <p>The final task in this set requires you to create a file picker.</p>
+        <ol>
+          <li>Create a basic file picker.</li>
+          <li>Allow the user to pick multiple files at once.</li>
+          <li>Allow the file picker to accept JPG and PNG images only.</li>
+        </ol>
+
+        <div class="centered-container">
+          <form action="#" method="post">
+            <fieldset>
+              <legend>Choose gallery images to upload:</legend>
+              <input
+                type="file"
+                name="bc3File"
+                id="bc3-picker"
+                accept=".jpg,.png"
+                multiple
+              />
+            </fieldset>
+          </form>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

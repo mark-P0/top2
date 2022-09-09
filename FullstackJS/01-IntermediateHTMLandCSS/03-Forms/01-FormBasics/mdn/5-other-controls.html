@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- prettier-ignore -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://unpkg.com/sanitize.css" />
+    <link rel="stylesheet" href="https://unpkg.com/sanitize.css/typography.css" />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/sanitize.css/forms.css" /> -->
+
+    <style>
+      html {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      body {
+        margin: 1rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 1rem 0.5rem gainsboro;
+        max-width: 42rem;
+      }
+
+      #sections {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      section {
+        border: 1px solid lightgray;
+        padding: 0 1rem;
+        padding-bottom: 1rem;
+        border-radius: 0.5rem;
+      }
+
+      .centered-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      fieldset {
+        padding: 1rem;
+      }
+
+      #other1 fieldset,
+      _ {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        gap: 0.5rem;
+      }
+
+      .aligned-input-labels > div {
+        display: flex;
+        gap: 1rem;
+      }
+      .aligned-input-labels > div > label {
+        width: 5rem;
+        text-align: right;
+      }
+
+      .single-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+      }
+    </style>
+
+    <title>Other form controls | The different form controls | MDN</title>
+  </head>
+
+  <body>
+    <h1>Other form controls</h1>
+
+    <div id="sections">
+      <section id="other1">
+        <h2>Other controls 1</h2>
+        <p>
+          In our first "other controls" assessment, we'll get you to create a
+          multi-line text input.
+        </p>
+        <ol>
+          <li>Create a basic multi-line text input.</li>
+          <li>Associate it semantically with the provided "Comment" label.</li>
+          <li>
+            Give the input 35 columns, and 10 rows of space in which to add
+            comments.
+          </li>
+          <li>Give the comments a maximum length of 100 characters.</li>
+        </ol>
+
+        <div class="centered-container">
+          <form action="#" method="post">
+            <fieldset class="aligned-input-labels">
+              <legend>Enter your comment</legend>
+
+              <div>
+                <label for="other1-name">Name:</label>
+                <input type="text" name="other1Name" id="other1-name" />
+              </div>
+              <div>
+                <label for="other1-comment">Comment:</label>
+                <textarea
+                  name="other1Comment"
+                  id="other1-comment"
+                  cols="35"
+                  rows="10"
+                  maxlength="100"
+                ></textarea>
+              </div>
+              <div class="centered-container">
+                <button type="submit">Submit</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </section>
+
+      <section id="other2">
+        <h2>Other controls 2</h2>
+        <p>
+          Now it's time to have a go at implementing a drop-down select menu, to
+          allow a user to pick their favorite food from the choices provided.
+        </p>
+        <ol>
+          <li>Create your basic select box structure.</li>
+          <li>Associate it semantically with the provided "food" label.</li>
+          <li>
+            Inside the list, split the choices up into 2 subgroups — "mains" and
+            "snacks".
+          </li>
+        </ol>
+
+        <div class="centered-container">
+          <form action="#" method="post">
+            <fieldset class="single-container">
+              <div>
+                <label for="other2-food">Pick your favorite food:</label>
+                <select name="other2Food" id="other2-food">
+                  <option value=""></option>
+                  <optgroup label="Mains">
+                    <option value="salad">Salad</option>
+                    <option value="curry">Curry</option>
+                    <option value="pizza">Pizza</option>
+                    <option value="fajitas">Fajitas</option>
+                  </optgroup>
+                  <optgroup label="Snacks">
+                    <option value="biscuits">Biscuits</option>
+                    <option value="crisps">Crisps</option>
+                    <option value="fruit">Fruit</option>
+                    <option value="breadsticks">Breadsticks</option>
+                  </optgroup>
+                </select>
+              </div>
+              <div class="centered-container">
+                <button type="submit">Submit</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </section>
+
+      <section id="other3">
+        <h2>Other controls 3</h2>
+        <p>
+          In our final task of this set, we start with much the same list of
+          food choices. However, this time we want to do things differently:
+        </p>
+        <ol>
+          <li>
+            Create a basic text input that is semantically associated with the
+            provided label.
+          </li>
+          <li>
+            Put the food choices into a list that can be associated with a form
+            input.
+          </li>
+          <li>
+            Associate the list with your text input, so that when you type
+            characters, any of the list options that match the character
+            sequence are given in a dropdown list as autocomplete suggestions.
+          </li>
+        </ol>
+
+        <div class="centered-container">
+          <form action="#" method="post">
+            <fieldset class="single-container">
+              <div>
+                <label for="other3-food">Pick your favorite food:</label>
+                <input
+                  type="text"
+                  name="other3Food"
+                  id="other3-food"
+                  list="food-suggestions"
+                />
+                <datalist id="food-suggestions">
+                  <label for="other2-food">Pick your favorite food:</label>
+                  <select name="other2Food" id="other2-food">
+                    <option value=""></option>
+                    <optgroup label="Mains">
+                      <option value="salad">Salad</option>
+                      <option value="curry">Curry</option>
+                      <option value="pizza">Pizza</option>
+                      <option value="fajitas">Fajitas</option>
+                    </optgroup>
+                    <optgroup label="Snacks">
+                      <option value="biscuits">Biscuits</option>
+                      <option value="crisps">Crisps</option>
+                      <option value="fruit">Fruit</option>
+                      <option value="breadsticks">Breadsticks</option>
+                    </optgroup>
+                  </select>
+                </datalist>
+              </div>
+              <div class="centered-container">
+                <button type="submit">Submit</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

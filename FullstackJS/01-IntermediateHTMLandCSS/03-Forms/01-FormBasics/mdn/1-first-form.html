@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- prettier-ignore -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css" /> -->
+
+    <link rel="stylesheet" href="https://unpkg.com/sanitize.css" />
+    <link rel="stylesheet" href="https://unpkg.com/sanitize.css/typography.css" />
+    <link rel="stylesheet" href="https://unpkg.com/sanitize.css/forms.css" />
+
+    <style>
+      html {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      body {
+        margin: 1rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 1rem 0.5rem gainsboro;
+
+        max-width: 42rem;
+      }
+
+      blockquote {
+        font-style: italic;
+      }
+
+      code {
+        font-style: normal;
+      }
+
+      .centered-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem 0;
+      }
+
+      #contact {
+        /* background-color: crimson; */
+
+        width: 24rem;
+      }
+      #contact fieldset {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding-top: 1rem;
+      }
+      #contact fieldset legend {
+        text-transform: uppercase;
+        font-size: small;
+        letter-spacing: 0.1rem;
+      }
+      #contact fieldset legend::first-letter {
+        font-size: medium;
+      }
+      #contact div {
+        display: flex;
+        justify-content: center;
+      }
+      #contact div > label {
+        flex: 2;
+      }
+      #contact div > input {
+        flex: 7;
+      }
+      #contact div > textarea {
+        flex: 7;
+        height: 8rem;
+      }
+      #contact div > button {
+        text-transform: uppercase;
+        font-size: small;
+        letter-spacing: 0.1rem;
+        padding: 0.5rem;
+        border-radius: 2rem;
+        border: 1px solid gainsboro;
+        box-shadow: 0.25rem -0.25rem gray;
+      }
+      #contact div > button > span {
+        display: inline-block;
+      }
+      #contact div > button > span::first-letter {
+        font-size: medium;
+      }
+
+    </style>
+
+    <title>Your first form | Introductory guides | MDN</title>
+  </head>
+
+  <body>
+    <h1>
+      <a
+        href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Your_first_form"
+      >
+        Your first form
+      </a>
+    </h1>
+
+    <p>From MDN:</p>
+    <blockquote>
+      Ok, let's have a go at creating the HTML for our form. We will use the
+      following HTML elements: <code>&lt;form&gt;</code>,
+      <code>&lt;label&gt;</code>, <code>&lt;input&gt;</code>,
+      <code>&lt;textarea&gt;</code>, and <code>&lt;button&gt;</code>.
+    </blockquote>
+
+    <div class="centered-container">
+      <form action="#" id="contact">
+        <fieldset>
+          <legend>Contact</legend>
+          <div>
+            <label for="contact-name">Name:</label>
+            <input type="text" id="contact-name" name="sender-name" />
+          </div>
+          <div>
+            <label for="contact-email">E-mail:</label>
+            <input type="email" id="contact-email" name="sender-email" />
+          </div>
+          <div>
+            <label for="contact-message">Message:</label>
+            <textarea id="contact-message" name="sender-message"></textarea>
+          </div>
+          <div>
+            <button type="submit">
+              <span>Send</span> <span>your</span> <span>message</span>
+            </button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+
+    <!-- <div class="centered-container"> -->
+    <!-- <img -->
+    <!-- src="https://developer.mozilla.org/en-US/docs/Learn/Forms/Your_first_form/form-sketch-low.jpg" -->
+    <!-- /> -->
+    <!-- </div> -->
+  </body>
+</html>

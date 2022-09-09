@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- prettier-ignore -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://unpkg.com/sanitize.css" />
+    <link rel="stylesheet" href="https://unpkg.com/sanitize.css/typography.css" />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/sanitize.css/forms.css" /> -->
+
+    <style>
+      html {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      body {
+        margin: 1rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 1rem 0.5rem gainsboro;
+        max-width: 42rem;
+      }
+
+      #sections {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      section {
+        border: 1px solid lightgray;
+        padding: 0 1rem;
+        padding-bottom: 1rem;
+        border-radius: 0.5rem;
+      }
+
+      .centered-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      fieldset {
+        padding: 1rem;
+      }
+
+      #html1 fieldset,
+      #html2 fieldset,
+      _ {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        gap: 0.5rem;
+      }
+
+      .aligned-input-labels > div {
+        display: flex;
+        gap: 1rem;
+      }
+      .aligned-input-labels > div > label {
+        width: 8rem;
+        text-align: right;
+      }
+
+      #slider-container {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+    </style>
+
+    <title>The HTML5 input types | The different form controls | MDN</title>
+  </head>
+
+  <body>
+    <h1>The HTML5 input types</h1>
+
+    <div id="sections">
+      <section id="html1">
+        <h2>HTML controls 1</h2>
+        <p>
+          First, let's explore some input types. Create appropriate inputs for a
+          user to update their details for:
+        </p>
+        <ol>
+          <li>Email</li>
+          <li>Website</li>
+          <li>Phone number</li>
+          <li>Favorite color</li>
+        </ol>
+
+        <div class="centered-container">
+          <form action="#" method="post">
+            <fieldset class="aligned-input-labels">
+              <legend>Edit your preferences</legend>
+
+              <div>
+                <label for="html1-email">Email:</label>
+                <input type="email" name="html1Email" id="html1-email" />
+              </div>
+              <div>
+                <label for="html1-url">Website:</label>
+                <input type="url" name="html1Url" id="html1-url" />
+              </div>
+              <div>
+                <label for="html1-number">Phone number:</label>
+                <input type="tel" name="html1Number" id="html1-number" />
+              </div>
+              <div>
+                <label for="html1-color">Favorite color:</label>
+                <input type="color" name="html1color" id="html1-color" />
+              </div>
+              <button type="submit">Submit</button>
+            </fieldset>
+          </form>
+        </div>
+      </section>
+
+      <section id="html2">
+        <h2>HTML controls 2</h2>
+        <p>
+          Next, we want you to implement a slider control to allow the user to
+          choose a maximum number of people to invite to their party.
+        </p>
+
+        <div class="centered-container">
+          <form action="#" method="post">
+            <fieldset>
+              <legend>Select maximum number of invitations:</legend>
+
+              <div id="slider-container">
+                <input
+                  type="range"
+                  name=""
+                  id="max-invite"
+                  min="0"
+                  max="30"
+                  value="10"
+                />
+                <output id="invite-output" for="max-invite">...</output>
+              </div>
+              <div class="centered-container">
+                <button type="submit">Submit</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+        <script defer>
+          const slider = {
+            element: document.querySelector('#html2 input'),
+            output: document.querySelector('#html2 output'),
+          };
+          slider.element.addEventListener('input', () => {
+            slider.output.textContent = slider.element.value;
+          });
+          slider.element.dispatchEvent(new Event('input'));
+        </script>
+      </section>
+    </div>
+  </body>
+</html>
