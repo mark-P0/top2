@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://unpkg.com/sanitize.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/sanitize.css/typography.css"
+    />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/sanitize.css/forms.css" /> -->
+
+    <style>
+      html {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      body {
+        margin: 1rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 1rem 0.5rem gainsboro;
+        max-width: 42rem;
+      }
+
+      body > section {
+        margin-bottom: 1rem;
+
+        border: 1px solid lightgray;
+        padding: 0 1rem;
+        padding-bottom: 1rem;
+        border-radius: 0.5rem;
+      }
+
+      /* body > section:not(:last-child) { */
+      /* display: none; */
+      /* } */
+
+      span[aria-label='required'] {
+        color: red;
+      }
+
+      /* #styled-form input:valid { */
+      /* border-color: green; */
+      /* } */
+      #styled-form input:invalid {
+        border-color: red;
+      }
+
+      fieldset {
+        padding: 1rem;
+
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      fieldset > div {
+        display: flex;
+        gap: 0.5rem;
+      }
+      fieldset > div > * {
+        flex: 2;
+      }
+      fieldset > div > label {
+        text-align: right;
+        flex: 1;
+      }
+    </style>
+
+    <title>Form Validation | The Odin Project</title>
+  </head>
+
+  <body>
+    <h1>Form Validation</h1>
+
+    <section>
+      <h2>Required Validation</h2>
+      <form action="#" method="get">
+        <fieldset>
+          <div>
+            <label for="req-email">
+              Email:
+              <strong><span aria-label="required">*</span></strong>
+            </label>
+            <input type="email" name="reqEmail" id="req-email" required />
+          </div>
+          <div>
+            <label for="req-password">
+              Password:
+              <strong><span aria-label="required">*</span></strong>
+            </label>
+            <input
+              type="password"
+              name="reqPassword"
+              id="req-password"
+              required
+            />
+          </div>
+          <button type="submit">Login</button>
+        </fieldset>
+      </form>
+    </section>
+
+    <section>
+      <h2>Text Length Validations</h2>
+
+      <section>
+        <h3>Minimum Length Validation</h3>
+        <form action="#" method="get">
+          <fieldset>
+            <div>
+              <textarea
+                name="lengthMinText"
+                id="length-min-text"
+                cols="30"
+                rows="10"
+                placeholder="What's happening?"
+                minlength="3"
+              ></textarea>
+            </div>
+            <button type="submit">Tweet</button>
+          </fieldset>
+        </form>
+      </section>
+
+      <section>
+        <h3>Maximum Length Validation</h3>
+        <form action="#" method="get">
+          <fieldset>
+            <div>
+              <textarea
+                name="lengthMaxText"
+                id="length-max-text"
+                cols="30"
+                rows="10"
+                placeholder="What's happening?"
+                maxlength="20"
+              ></textarea>
+            </div>
+            <button type="submit">Tweet</button>
+          </fieldset>
+        </form>
+      </section>
+
+      <section>
+        <h3>Combining Validations</h3>
+        <form action="#" method="get">
+          <fieldset>
+            <div>
+              <textarea
+                name="lengthMinMaxText"
+                id="length-minmax-text"
+                cols="30"
+                rows="10"
+                placeholder="What's happening?"
+                minlength="5"
+                maxlength="20"
+              ></textarea>
+            </div>
+            <button type="submit">Tweet</button>
+          </fieldset>
+        </form>
+      </section>
+    </section>
+
+    <section>
+      <h2>Number Range Validations</h2>
+
+      <section>
+        <h3>Min Validation</h3>
+        <form action="#" method="get">
+          <fieldset>
+            <div>
+              <label for="num-range-min">Quantity:</label>
+              <input
+                type="number"
+                name="numRangeMin"
+                id="num-range-min"
+                min="1"
+                value="0"
+              />
+            </div>
+            <button type="submit">Place Order</button>
+          </fieldset>
+        </form>
+      </section>
+      <section>
+        <h3>Max Validation</h3>
+        <form action="#" method="get">
+          <fieldset>
+            <div>
+              <label for="num-range-max">Passengers:</label>
+              <input
+                type="number"
+                name="numRangeMax"
+                id="num-range-max"
+                max="5"
+                value="0"
+              />
+            </div>
+            <button type="submit">Book</button>
+          </fieldset>
+        </form>
+      </section>
+      <section>
+        <h3>Combined</h3>
+        <p><em>Not included in the lesson.</em></p>
+        <form action="#" method="get">
+          <fieldset>
+            <div>
+              <label for="num-range-max">Visitors:</label>
+              <input
+                type="number"
+                name="numRangeMax"
+                id="num-range-max"
+                min="1"
+                max="50"
+                value="1"
+              />
+            </div>
+            <button type="submit">Schedule</button>
+          </fieldset>
+        </form>
+      </section>
+    </section>
+
+    <section>
+      <h2>Pattern Validation</h2>
+      <p><em>i.e.</em> regular expressions (regex)</p>
+
+      <section>
+        <h3>Customized pattern</h3>
+        <p>Only <code>&lt;input&gt;</code> elements can be patterned.</p>
+        <form action="#" method="get">
+          <fieldset>
+            <div>
+              <label for="pattern-zip">Zip code:</label>
+              <input
+                type="text"
+                name="patternZip"
+                id="pattern-zip"
+                required
+                pattern="(\d{5}([\-]\d{4})?)"
+                title="Please enter a valid zip code, e.g. 65251"
+                placeholder="e.g. 65251"
+              />
+            </div>
+            <button type="submit">Submit</button>
+          </fieldset>
+        </form>
+      </section>
+      <section>
+        <h3>Built-ins</h3>
+        <p>Some <code>&lt;input&gt;</code> types already has a pattern.</p>
+        <form action="#" method="get">
+          <fieldset>
+            <div>
+              <label for="pattern-email">Email:</label>
+              <input
+                type="email"
+                name="patternEmail"
+                id="pattern-email"
+                required
+                placeholder="user@domain.com"
+              />
+            </div>
+            <div>
+              <label for="pattern-website">Website:</label>
+              <input
+                type="url"
+                name="patternWebsite"
+                id="pattern-website"
+                required
+                title="Protocol is required"
+                placeholder="https://website.com"
+              />
+            </div>
+            <button type="submit">Submit</button>
+          </fieldset>
+        </form>
+      </section>
+    </section>
+
+    <section>
+      <h2>Styling Validations</h2>
+      <p>
+        Uses pseudo-classes, e.g. <code>:valid</code>, <code>:invalid</code>
+      </p>
+      <form action="#" method="get" id="styled-form">
+        <fieldset>
+          <div>
+            <label for="pattern-email">Email:</label>
+            <input
+              type="email"
+              name="patternEmail"
+              id="pattern-email"
+              required
+              placeholder="user@domain.com"
+            />
+          </div>
+          <div>
+            <label for="pattern-website">Website:</label>
+            <input
+              type="url"
+              name="patternWebsite"
+              id="pattern-website"
+              required
+              title="Protocol is required, e.g. http://, https://"
+              placeholder="https://website.com"
+            />
+          </div>
+          <button type="submit">Submit</button>
+        </fieldset>
+      </form>
+    </section>
+  </body>
+</html>

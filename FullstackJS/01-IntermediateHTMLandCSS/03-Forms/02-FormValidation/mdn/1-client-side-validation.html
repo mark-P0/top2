@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://unpkg.com/sanitize.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/sanitize.css/typography.css"
+    />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/sanitize.css/forms.css" /> -->
+
+    <style>
+      html {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      body {
+        margin: 1rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 1rem 0.5rem gainsboro;
+        max-width: 42rem;
+
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      body > section {
+        border: 1px solid lightgray;
+        padding: 0 1rem;
+        padding-bottom: 1rem;
+        border-radius: 0.5rem;
+      }
+
+      /* body > section:not(:last-child) { */
+      /* display: none; */
+      /* } */
+
+      span[aria-label='required'] {
+        color: red;
+      }
+
+      fieldset {
+        padding: 1rem;
+
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      fieldset > div {
+        display: flex;
+        gap: 0.5rem;
+      }
+      fieldset > div > * {
+        flex: 2;
+      }
+      fieldset > div > label {
+        text-align: right;
+        flex: 1;
+      }
+
+      .given {
+        background-color: #fff;
+        color: #333;
+        font: 1em / 1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
+        padding: 1em;
+        margin: 0;
+      }
+
+      .given * {
+        box-sizing: border-box;
+      }
+
+      .given input:invalid,
+      .given textarea:invalid,
+      _ {
+        border-color: red;
+      }
+    </style>
+
+    <title>Test your skills: Form validation</title>
+  </head>
+
+  <body>
+    <h1>Test your skills: Form validation</h1>
+
+    <section class="given">
+      <h3>Form validation 1</h3>
+      <p>
+        In this task, we are providing you with a simple support query form, and
+        we want you to add some validation features to it:
+      </p>
+
+      <ol>
+        <li>
+          Make all of the input fields mandatory to complete before the form can
+          be submitted.
+        </li>
+        <li>
+          Change the type of the "Email address" and "Phone number" fields to
+          make the browser apply some more specific validation suitable for the
+          data being asked for.
+        </li>
+        <li>
+          Give the "User name" field a required length of between 5 and 20
+          characters, the "Phone number" field a maximum length of 15
+          characters, and the "Comment" field a maximum length of 200
+          characters.
+        </li>
+      </ol>
+
+      <form>
+        <h2>Enter your support query</h2>
+        <ul>
+          <li>
+            <label for="uname">User name:</label>
+            <input
+              type="text"
+              name="uname"
+              id="uname"
+              required
+              minlength="5"
+              maxlength="20"
+            />
+          </li>
+          <li>
+            <label for="email">Email address:</label>
+            <input type="email" name="email" id="email" required />
+          </li>
+          <li>
+            <label for="phone">Phone number:</label>
+            <input type="tel" name="phone" id="phone" required maxlength="15" />
+          </li>
+          <li>
+            <label for="comment">Comment:</label>
+            <textarea
+              name="comment"
+              id="comment"
+              required
+              maxlength="200"
+            ></textarea>
+          </li>
+          <li>
+            <button>Submit comment</button>
+          </li>
+        </ul>
+      </form>
+    </section>
+
+    <section class="given">
+      <h3>Form validation 2</h3>
+      <p>
+        Now we want you to take the same form you saw in the previous task (use
+        your previous answer if you want to), and add some more specific pattern
+        validation to the first three fields using regular expressions.
+      </p>
+
+      <ol>
+        <li>
+          All of the user names in our application consist of a single letter,
+          followed by a dot, followed by three or more letters or numbers. All
+          letters should be lowercase.
+        </li>
+        <li>
+          All of the email addresses for our users consist of one or more
+          letters (lower or upper case) or numbers, followed by "@bigcorp.eu".
+        </li>
+        <li>
+          Remove the length validation from the phone number field if it is
+          present, and set it so that it accepts 10 digits — either 10 digits in
+          a row, or a pattern of three digits, three digits, then four digits,
+          separated by either spaces, dashes, or dots.
+        </li>
+      </ol>
+
+      <form>
+        <h2>Enter your support query</h2>
+        <ul>
+          <li>
+            <label for="uname">User name:</label>
+            <input
+              type="text"
+              name="uname"
+              id="uname"
+              required
+              minlength="5"
+              maxlength="20"
+              pattern="[a-z].[a-z0-9]{3,}"
+            />
+          </li>
+          <li>
+            <label for="email">Email address:</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              required
+              pattern="[a-zA-Z\d]{1,}@bigcorp.eu"
+            />
+          </li>
+          <li>
+            <label for="phone">Phone number:</label>
+            <input
+              type="tel"
+              name="phone"
+              id="phone"
+              required
+              pattern="([0-9]{10})|([0-9]{3}[\s\-.][0-9]{3}[\s\-.][0-9]{4})"
+            />
+          </li>
+          <li>
+            <label for="comment">Comment:</label>
+            <textarea
+              name="comment"
+              id="comment"
+              required
+              maxlength="200"
+            ></textarea>
+          </li>
+          <li>
+            <button>Submit comment</button>
+          </li>
+        </ul>
+      </form>
+    </section>
+
+    <section class="given">
+      <h2>Form validation 3</h2>
+      <p>
+        <em>
+          The section <strong>Validating forms using JavaScript</strong> was
+          supposed to be skipped. This exercise uses concepts from that section,
+          and thus will also be skipped.
+        </em>
+      </p>
+    </section>
+  </body>
+</html>
