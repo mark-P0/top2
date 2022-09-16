@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      :root {
+        box-sizing: border-box;
+      }
+      * {
+        box-sizing: inherit;
+      }
+      html {
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+
+        background-color: white;
+      }
+      body {
+        margin: 0;
+        padding: 1rem;
+
+        flex: 1;
+
+        display: grid;
+        justify-content: center;
+        gap: 1rem;
+        /* border: 1px solid black; */
+        /* border-collapse: collapse; */
+
+        grid-template-columns: 4rem 8rem;
+        /* grid-template-rows: 3rem 9rem; */
+        /* grid-auto-columns: 4rem 8rem 24rem; */
+        grid-auto-rows: 3rem 9rem 12rem;
+        /* grid-auto-flow: column; */
+
+        /* grid-auto-flow: row; */
+        /* grid-template-columns: 1rem 1rem 1rem; */
+        /* grid-auto-rows: 1rem; */
+
+        /* grid-template-columns: 2rem 4rem 8rem; */
+        /* grid-template-rows: 3rem 9rem 27rem; */
+
+        display: grid;
+        grid-auto-flow: row;
+        grid-template-columns: 2rem 4rem 8rem;
+        grid-auto-rows: 8rem;
+
+        background-color: lightcoral;
+      }
+      body > * {
+        border: 1px solid black;
+
+        background-color: yellow;
+      }
+    </style>
+
+    <title>Creating a Grid</title>
+  </head>
+
+  <body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </body>
+</html>
