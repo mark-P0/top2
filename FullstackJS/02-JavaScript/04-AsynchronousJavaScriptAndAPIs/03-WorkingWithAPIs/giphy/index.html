@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" class="h-screen bg-gray-100 p-4">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GIPHY API Testing</title>
+
+    <script>
+      console.clear();
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="./script.js"></script>
+  </head>
+
+  <body
+    class="aspect-[9/18] h-full m-auto bg-slate-800 text-white rounded-lg drop-shadow-2xl flex flex-col gap-4 p-4"
+  >
+    <form
+      action=""
+      autocomplete="off"
+      class="bg-slate-700 rounded-lg flex gap-4 p-3"
+    >
+      <input
+        type="text"
+        name="query"
+        placeholder="Search GIFs, e.g. 'cats'"
+        class="bg-white text-black rounded grow px-2 py-1 placeholder:text-gray-400 placeholder:text-sm placeholder"
+      />
+      <button type="submit">
+        <!-- prettier-ignore -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <!--  Hero Icons `magnifying-glass`
+            --  https://heroicons.com/
+            -->
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+        </svg>
+      </button>
+    </form>
+
+    <div class="grow flex flex-col justify-center">
+      <img />
+    </div>
+  </body>
+</html>
