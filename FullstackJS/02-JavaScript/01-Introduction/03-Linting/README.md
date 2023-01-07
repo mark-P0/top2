@@ -9,9 +9,9 @@
 ### ESLint + Prettier
 
 ```sh
-npm init -y
-npm i -D prettier
-npm init @eslint/config -- --config prettier
+npm init -y                               # Needed before ESLint can be initialized
+npm init @eslint/config                   # Then follow the prompts
+npm i -D prettier eslint-config-prettier  # Then extend ESLint with `prettier`
 ```
 
 ### Recommended rules
