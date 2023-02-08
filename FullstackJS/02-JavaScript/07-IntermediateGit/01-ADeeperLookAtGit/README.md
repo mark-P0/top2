@@ -67,6 +67,17 @@ git rebase [-i]
 - More forgiving version
 - Kinda misleading name, because it has "force" in it...
 
+## [Think Like (a) Git](https://think-like-a-git.net/)
+
+- A Git repository is one giant graph
+- Git commits are nodes in the graph (repository)
+- Git commit nodes point to the ones before them
+  - This allows history to be built
+- **References make commits reachable**
+- Branches are pointers to a commit
+  - It's a label, variable, a reference to a commit
+  - Branches can be used as a "save point"
+
 ## Knowledge Check
 
 - How can you amend your last commit?
@@ -107,3 +118,7 @@ git rebase [-i]
     - This is how they keep history
   - The branch head eventually traces back to a commit in the main branch
   - This common commit can be pointed to by several commits (which means there are several branches)
+
+  > `git` commands are [just] strangely named graph manipulation commands―creating/deleting nodes, moving pointers around
+  >
+  > ― [Kent Beck](https://twitter.com/KentBeck/status/42657237986054144)
