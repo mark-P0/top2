@@ -80,6 +80,14 @@ Gotcha
 
 > Functional components might not have this issue altogether...
 
+### Styling
+
+- Use CSS Modules pattern
+  ```js
+  import styles from '<>.modules.css';
+  ```
+- Google Fonts WOFF can be generated via https://gwfh.mranftl.com/
+
 ## Knowledge Check
 
 - How do you render lists in React?
