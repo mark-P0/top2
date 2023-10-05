@@ -10,6 +10,11 @@ General rule: Effects are for synchronizing with external systems (outside React
 - Databases
 - Subsystems within the same app (non-React)
 
+Another rule: Effects are for when you need to do something when the element is already _drawn_ / visible, e.g.
+
+- Changing styles
+- Changing dimensions
+
 ## Syntax
 
 ```jsx
