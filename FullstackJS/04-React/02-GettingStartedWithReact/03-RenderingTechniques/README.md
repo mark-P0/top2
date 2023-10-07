@@ -3,7 +3,15 @@
 ## List / Collection / Sequence
 
 ```jsx
-
+function TodoList({ items }) {
+  return (
+    <ol>
+      {items.map((item, idx) => (
+        <li key={idx}>{item}</li>
+      ))}
+    </ol>
+  );
+}
 ```
 
 - Assign `key` attribute
@@ -67,3 +75,33 @@ function TodoList({ items }) {
   );
 }
 ```
+
+### Note on variables
+
+- JSX can be assigned to variables
+- But unless they are used by React, **they are not yet rendered**
+
+```jsx
+function Parent() {
+  const child = <Child />;
+
+  if (someCondition) {
+    return <></>;
+  }
+  return child;
+}
+
+function Child() {
+  // ❗ Will not log until <Child /> is used by Parent
+  // (and <Parent /> is rendered by React)
+  // or until <Child /> is used directly
+  console.log("Child is rendered");
+
+  return <></>;
+}
+```
+
+- `const child = <Child />;` does not yet actually render `<Child />`
+- If `someCondition` is true, it is not used at all
+- If false, only then will it be rendered, as part of the return of `<Parent />`
+  - Assuming `<Parent />` is also rendered!
