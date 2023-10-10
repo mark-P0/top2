@@ -1,5 +1,27 @@
 # What is NodeJS?
 
+## _"A JavaScript runtime"_
+
+- JS normally runs in the browser
+- JS code was exclusive for websites
+- A runtime, e.g. Node, allows JS to be run outside of browsers, e.g. like regular programs
+
+## JavaScript runtimes
+
+- Node
+  - The _de-facto_ standard
+  - Almost synonymous with "JS runtime"
+- Deno
+  - Different enough from Node
+  - TypeScript-first
+  - Has Windows support
+  - Has its own way of managing packages
+- Bun
+  - Drop-in replacement for Node
+  - TypeScript-first
+  - Has no Windows support (so far)
+  - Compatible with `npm`
+
 ## Knowledge Check
 
 - What is Node?
