@@ -1,0 +1,25 @@
+# Introduction to Frameworks
+
+- Alleviates repetition
+  - Provides a basic starter point (boilerplate) that is similar across all projects
+- Provides organization
+  - Most frameworks require files to be structured a particular way
+  - This makes the source easy to work with
+- Examples
+  - Javascript
+    - Ember
+      - UI framework?
+    - Meteor
+    - Express
+  - Python
+    - Django
+    - Flask?
+    - Grok
+  - Ruby
+    - Rails
+    - Sinatra
+    - Padrino
+  - Java
+    - Spring
+  - PHP
+    - Laravel
