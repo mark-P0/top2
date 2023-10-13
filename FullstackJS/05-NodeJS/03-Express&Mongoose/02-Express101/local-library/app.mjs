@@ -4,6 +4,11 @@ import createError from "http-errors";
 import logger from "morgan";
 import path from "path";
 import url from "url";
+import { AuthorRouter } from "./routes/author.mjs";
+import { BookInstanceRouter } from "./routes/book-instance.mjs";
+import { BookRouter } from "./routes/book.mjs";
+import { CatalogRouter } from "./routes/catalog.mjs";
+import { GenreRouter } from "./routes/genre.mjs";
 import { IndexRouter } from "./routes/index.mjs";
 import { UsersRouter } from "./routes/users.mjs";
 
@@ -24,6 +29,11 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", IndexRouter);
 app.use("/users", UsersRouter);
+app.use(CatalogRouter);
+app.use(BookRouter);
+app.use(BookInstanceRouter);
+app.use(AuthorRouter);
+app.use(GenreRouter);
 
 /** catch 404 and forward to error handler */
 app.use((req, res, next) => {
