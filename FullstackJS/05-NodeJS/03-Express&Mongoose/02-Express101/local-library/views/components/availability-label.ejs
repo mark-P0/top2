@@ -1,0 +1,7 @@
+<% if (status === 'Available') { %>
+<span class="text-green-600"><%= status %></span>
+<% } else if (status === 'Loaned') { %>
+<span class="text-yellow-600"><%= status %></span>
+<% } else if (status === 'Maintenance') { %>
+<span class="text-red-600"><%= status %></span>
+<% } %>

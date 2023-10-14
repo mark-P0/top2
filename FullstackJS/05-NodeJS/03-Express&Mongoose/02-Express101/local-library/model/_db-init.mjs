@@ -19,7 +19,7 @@ const { uri } = process.env;
 try {
   console.log(`Connecting to ${uri}...`);
   await mongoose.connect(uri);
-  console.log(`Connected to ${uri}.`);
+  console.log(`Connected.`);
 } catch (error) {
   console.log(error);
 }

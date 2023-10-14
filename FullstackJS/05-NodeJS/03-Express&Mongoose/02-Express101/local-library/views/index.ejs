@@ -1,20 +1,48 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <%- include('./components/head.ejs') %>
 
-    <script>
-      setTimeout(() => {
-        window.location.reload();
-      }, 1 * 1000);
-    </script>
+    <title>Local Library</title>
   </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>
-      Welcome to
-      <%= title %>
-    </p>
+  <body class="grid md:grid-cols-[1fr_4fr] gap-6 p-6">
+    <aside><%- include('./components/nav-links.ejs') %></aside>
+
+    <main class="grid auto-rows-min gap-6">
+      <header class="grid gap-3">
+        <h1 class="text-5xl">Local Library Home</h1>
+        <p>
+          Welcome to Local Library, a very basic Express website developed as a
+          tutorial example on the Mozilla Developer Network
+        </p>
+      </header>
+
+      <section class="grid gap-3">
+        <h2 class="text-4xl">Dynamic content</h2>
+        <p>The library has the following record counts:</p>
+        <ul>
+          <li>
+            <strong>Books:</strong>
+            <%= bookCt %>
+          </li>
+          <li>
+            <strong>Total copies:</strong>
+            <%= bookCopyTotalCt %>
+          </li>
+          <li>
+            <strong>Copies available:</strong>
+            <%= bookCopyAvailCt %>
+          </li>
+          <li>
+            <strong>Authors:</strong>
+            <%= authorCt %>
+          </li>
+          <li>
+            <strong>Genres:</strong>
+            <%= genreCt %>
+          </li>
+        </ul>
+      </section>
+    </main>
   </body>
 </html>

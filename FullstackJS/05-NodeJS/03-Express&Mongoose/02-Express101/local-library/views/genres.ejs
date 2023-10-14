@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include('./components/head.ejs') %>
+
+    <title>Genres | Local Library</title>
+  </head>
+  <body class="grid md:grid-cols-[1fr_4fr] gap-6 p-6">
+    <aside><%- include('./components/nav-links.ejs') %></aside>
+
+    <main class="grid auto-rows-min gap-6">
+      <h1 class="text-5xl">List of Genres</h1>
+
+      <% if (genres?.length > 0) { %>
+
+      <ul>
+        <% genres.forEach(({url, name}) => { %>
+        <li>
+          <%- include('./components/link.ejs', {href: url, text: name}) %>
+        </li>
+        <% }) %>
+      </ul>
+
+      <% } else { %>
+
+      <p>There are no genres.</p>
+
+      <% } %>
+    </main>
+  </body>
+</html>

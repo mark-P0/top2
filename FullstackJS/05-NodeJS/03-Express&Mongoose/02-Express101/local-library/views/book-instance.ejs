@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include('./components/head.ejs') %>
+
+    <title><%= title %> (Copy) | Local Library</title>
+  </head>
+  <body class="grid md:grid-cols-[1fr_4fr] gap-6 p-6">
+    <aside><%- include('./components/nav-links.ejs') %></aside>
+
+    <main class="grid auto-rows-min gap-6">
+      <h1 class="text-5xl">
+        <%= title %>
+        <span class="italic">(Copy)</span>
+      </h1>
+
+      <ul>
+        <li>
+          <strong>Imprint:</strong>
+          <%= imprint %>
+        </li>
+        <li>
+          <strong>Status:</strong>
+          <%- include('./components/availability-label.ejs', {status}) %>
+        </li>
+        <% if (status !== 'Available') { %>
+        <li>
+          <strong>Due back:</strong>
+          <%= due_back_formatted %>
+        </li>
+        <% } %>
+      </ul>
+    </main>
+  </body>
+</html>

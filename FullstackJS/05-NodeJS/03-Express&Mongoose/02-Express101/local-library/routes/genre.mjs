@@ -1,4 +1,8 @@
 import { Router } from "express";
+import { getBooksByGenreId } from "../model/book.mjs";
+import { getGenreName } from "../model/genre.mjs";
+import { isValidId } from "../model/utilities.mjs";
+import { raise } from "../utilities.mjs";
 import { withNextError } from "./utilities.mjs";
 
 export const GenreRouter = Router();
@@ -23,8 +27,19 @@ GenreRouter.get(
   "/catalog/genre/:id",
   withNextError(async (req, res, next) => {
     const { id } = req.params;
+    if (!isValidId(id)) raise(`Genre of id ${id} does not exist!`);
 
-    res.send(`Details of genre with id ${id}`);
+    const genreName = await getGenreName(id);
+    if (genreName === null) raise(`Genre of id ${id} does not exist!`);
+
+    const booksRaw = await getBooksByGenreId(id);
+    const books = booksRaw.map(({ url, title, summary }) => ({
+      url,
+      title,
+      summary,
+    }));
+
+    res.render("genre", { genreName, books });
   }),
 );
 

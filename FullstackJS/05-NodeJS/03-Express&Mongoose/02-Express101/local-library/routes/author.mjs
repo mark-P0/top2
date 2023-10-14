@@ -1,4 +1,8 @@
 import { Router } from "express";
+import { getAuthorData } from "../model/author.mjs";
+import { getBooksByAuthor } from "../model/book.mjs";
+import { isValidId } from "../model/utilities.mjs";
+import { raise } from "../utilities.mjs";
 import { withNextError } from "./utilities.mjs";
 
 export const AuthorRouter = Router();
@@ -23,8 +27,20 @@ AuthorRouter.get(
   "/catalog/author/:id",
   withNextError(async (req, res, next) => {
     const { id } = req.params;
+    if (!isValidId(id)) raise(`Author with id ${id} does not exist!`);
 
-    res.send(`Details of author with id ${id}`);
+    const data = await getAuthorData(id);
+    if (data === null) raise(`Author with id ${id} does not exist!`);
+    const { name, lifespan } = data;
+
+    const booksRaw = await getBooksByAuthor(id);
+    const books = booksRaw.map(({ url, title, summary }) => ({
+      url,
+      title,
+      summary,
+    }));
+
+    res.render("author", { name, lifespan, books });
   }),
 );
 

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include('./components/head.ejs') %>
+
+    <title>Authors | Local Library</title>
+  </head>
+  <body class="grid md:grid-cols-[1fr_4fr] gap-6 p-6">
+    <aside><%- include('./components/nav-links.ejs') %></aside>
+
+    <main class="grid auto-rows-min gap-6">
+      <h1 class="text-5xl">List of Authors</h1>
+
+      <% if (authors?.length > 0) { %>
+
+      <ul>
+        <% authors.forEach(({url, name, lifespan}) => { %>
+        <li>
+          <%- include('./components/link.ejs', {href: url, text: name}) %>
+          <span class="text-gray-400 text-xs"><%= lifespan %></span>
+        </li>
+        <% }) %>
+      </ul>
+
+      <% } else { %>
+
+      <p>There are no authors.</p>
+
+      <% } %>
+    </main>
+  </body>
+</html>

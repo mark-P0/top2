@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include('./components/head.ejs') %>
+
+    <title><%= name %> | Local Library</title>
+  </head>
+  <body class="grid md:grid-cols-[1fr_4fr] gap-6 p-6">
+    <aside><%- include('./components/nav-links.ejs') %></aside>
+
+    <main class="grid auto-rows-min gap-6">
+      <header class="grid gap-3">
+        <h1 class="text-5xl"><%= name %></h1>
+        <p><%= lifespan %></p>
+      </header>
+
+      <section class="grid gap-3">
+        <h2 class="text-4xl">Books</h2>
+
+        <% if (books?.length > 0) { %>
+
+        <dl class="grid gap-2">
+          <% books.forEach(({url, title, summary}) => { %>
+          <div>
+            <dt>
+              <strong>
+                <%- include('./components/link.ejs', {href: url, text: title}) %>
+              </strong>
+            </dt>
+            <dd><%= summary %></dd>
+          </div>
+          <% }) %>
+        </dl>
+
+        <% } else { %>
+
+        <p>This author has no books.</p>
+
+        <% } %>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,4 +1,7 @@
 import { Router } from "express";
+import { getBookCopy } from "../model/book-instance.mjs";
+import { isValidId } from "../model/utilities.mjs";
+import { raise } from "../utilities.mjs";
 import { withNextError } from "./utilities.mjs";
 
 export const BookInstanceRouter = Router();
@@ -23,8 +26,24 @@ BookInstanceRouter.get(
   "/catalog/book-instance/:id",
   withNextError(async (req, res, next) => {
     const { id } = req.params;
+    if (!isValidId(id)) raise(`Book copy of id ${id} does not exist!`);
 
-    res.send(`Details of book instance with id ${id}`);
+    const data = await getBookCopy(id);
+    if (data === null) raise(`Book copy of id ${id} does not exist!`);
+    const {
+      book: { title, url },
+      imprint,
+      status,
+      due_back_formatted,
+    } = data;
+
+    res.render("book-instance", {
+      title,
+      bookUrl: url,
+      imprint,
+      status,
+      due_back_formatted,
+    });
   }),
 );
 
