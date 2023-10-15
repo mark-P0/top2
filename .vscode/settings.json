@@ -1,0 +1,17 @@
+{
+  "[markdown][json][jsonc][html][css][js]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file", // "modificationsIfAvailable" breaks Prettier on Markdown files...
+    "editor.tabSize": 2
+  },
+  "cSpell.allowCompoundWords": true,
+  "cSpell.words": [
+    /* Force long format */
+    "bulma",
+    "subrepos",
+    "subrepo",
+    "bson",
+    "iife"
+  ]
+}
