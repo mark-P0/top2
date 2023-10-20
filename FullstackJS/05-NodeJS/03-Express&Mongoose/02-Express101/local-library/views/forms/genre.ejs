@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include('../components/head.ejs') -%>
+
+    <% if (isUpdating) { -%>
+    <title>Updating Genre | Local Library</title>
+    <% } else { -%>
+    <title>New Genre | Local Library</title>
+    <% } -%>
+  </head>
+  <body class="grid md:grid-cols-[1fr_4fr] gap-6 p-6">
+    <aside><%- include('../components/nav-links.ejs') -%></aside>
+
+    <main class="grid auto-rows-min gap-6">
+      <h1 class="text-5xl">
+        <% if (isUpdating) { -%>
+        Updating Genre Entry
+        <% } else { -%>
+        New Genre Entry
+        <% } -%>
+      </h1>
+
+      <%# No way to disable button without JS, so here it is... -%>
+      <script type="module">
+        let form = document.querySelector("form[method=post]");
+        form?.addEventListener("input", () => {
+          let invalidForm = document.querySelector("form[method=post]:invalid");
+          let submit = form.querySelector("button[type=submit]");
+          if (submit === null) return;
+          submit.disabled = invalidForm !== null;
+        });
+        form?.dispatchEvent(new Event("input"));
+      </script>
+      <form
+        method="post"
+        class="grid gap-3 justify-items-start [&:invalid>button[type=submit]]:opacity-50 [&:invalid>button[type=submit]]:cursor-not-allowed"
+      >
+        <label class="w-full grid gap-1">
+          <strong>Genre:</strong>
+          <input
+            type="text"
+            name="name"
+            placeholder="e.g. Fantasy, Poetry"
+            value="<%= defaultName -%>"
+            required
+            minlength="3"
+            class="border px-2 py-1"
+          />
+        </label>
+
+        <%- include('../components/errors.ejs', {errors}) -%>
+
+        <button type="submit" class="rounded bg-blue-600 text-white px-5 py-2">
+          Submit
+        </button>
+      </form>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "[javascript][json][jsonc][html]": {
+    "editor.codeActionsOnSave": {
+      "source.sortImports": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "cSpell.allowCompoundWords": true,
+  "cSpell.words": ["virtuals"]
+}

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include('../components/head.ejs') -%>
+
+    <title>Book Copies | Local Library</title>
+  </head>
+  <body class="grid md:grid-cols-[1fr_4fr] gap-6 p-6">
+    <aside><%- include('../components/nav-links.ejs') -%></aside>
+
+    <main class="grid auto-rows-min gap-6">
+      <h1 class="text-5xl">List of Book Copies</h1>
+
+      <% if (copies?.length > 0) { -%>
+
+      <ul>
+        <%# prettier-ignore -%>
+        <% copies.forEach(({url, title, imprint, status, due_back_formatted}) => { -%>
+        <li>
+          <%- include('../components/link.ejs', {href: url, text: `${title} : ${imprint}`}) -%>
+          -
+          <%- include('../components/availability-label.ejs', {status}) -%>
+
+          <% if (status !== 'Available') { -%>
+          <span class="text-gray-400 text-xs">
+            Due:
+            <%= due_back_formatted -%>
+          </span>
+          <% } -%>
+        </li>
+        <% }) -%>
+      </ul>
+
+      <% } else { -%>
+
+      <p>There are no book copies in this library.</p>
+
+      <% } -%>
+    </main>
+  </body>
+</html>

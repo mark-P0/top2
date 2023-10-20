@@ -79,3 +79,35 @@ export async function getAuthorData(/** @type {string} */ id) {
   const query = Author.findById(id);
   return await query.exec();
 }
+
+export async function createAuthor(
+  /** @type {string} */ first_name,
+  /** @type {string} */ family_name,
+  /** @type {Date | undefined} */ date_of_birth,
+  /** @type {Date | undefined} */ date_of_death,
+) {
+  return new Author({
+    first_name,
+    family_name,
+    date_of_birth,
+    date_of_death,
+  }).save();
+}
+
+export async function deleteAuthor(/** @type {string} */ id) {
+  await Author.findByIdAndRemove(id);
+}
+
+export async function updateAuthor(
+  /** @type {string} */ id,
+  /** @type {string} */ first_name,
+  /** @type {string} */ family_name,
+  /** @type {Date | undefined} */ date_of_birth,
+  /** @type {Date | undefined} */ date_of_death,
+) {
+  return Author.findByIdAndUpdate(
+    id,
+    { first_name, family_name, date_of_birth, date_of_death },
+    {},
+  );
+}

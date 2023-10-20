@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <%- include('./components/head.ejs') %>
+    <%- include('./components/head.ejs') -%>
 
     <title>Local Library</title>
   </head>
   <body class="grid md:grid-cols-[1fr_4fr] gap-6 p-6">
-    <aside><%- include('./components/nav-links.ejs') %></aside>
+    <aside><%- include('./components/nav-links.ejs') -%></aside>
 
     <main class="grid auto-rows-min gap-6">
       <header class="grid gap-3">
@@ -23,23 +23,23 @@
         <ul>
           <li>
             <strong>Books:</strong>
-            <%= bookCt %>
+            <%= bookCt -%>
           </li>
           <li>
             <strong>Total copies:</strong>
-            <%= bookCopyTotalCt %>
+            <%= bookCopyTotalCt -%>
           </li>
           <li>
             <strong>Copies available:</strong>
-            <%= bookCopyAvailCt %>
+            <%= bookCopyAvailCt -%>
           </li>
           <li>
             <strong>Authors:</strong>
-            <%= authorCt %>
+            <%= authorCt -%>
           </li>
           <li>
             <strong>Genres:</strong>
-            <%= genreCt %>
+            <%= genreCt -%>
           </li>
         </ul>
       </section>
