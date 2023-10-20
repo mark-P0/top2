@@ -43,7 +43,7 @@ CatalogRouter.get(
       url,
     }));
 
-    res.render("books", { books });
+    res.render("lists/books", { books });
   }),
 );
 
@@ -62,7 +62,7 @@ CatalogRouter.get(
       /* TODO - Do this on database query? There doesn't seem to be a way to sort nested fields? */
       .sort(({ title: a }, { title: b }) => (a < b ? -1 : 1));
 
-    res.render("book-instances", { copies });
+    res.render("lists/book-instances", { copies });
   }),
 );
 
@@ -72,7 +72,7 @@ CatalogRouter.get(
     const raw = await getGenresListData();
     const genres = raw.map(({ url, name }) => ({ url, name }));
 
-    res.render("genres", { genres });
+    res.render("lists/genres", { genres });
   }),
 );
 
@@ -86,6 +86,6 @@ CatalogRouter.get(
       lifespan,
     }));
 
-    res.render("authors", { authors });
+    res.render("lists/authors", { authors });
   }),
 );

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include('../components/head.ejs') -%>
+
+    <% if (isUpdating) { -%>
+    <title>Updating Book Copy | Local Library</title>
+    <% } else { -%>
+    <title>New Book Copy | Local Library</title>
+    <% } -%>
+  </head>
+  <body class="grid md:grid-cols-[1fr_4fr] gap-6 p-6">
+    <aside><%- include('../components/nav-links.ejs') -%></aside>
+
+    <main class="grid auto-rows-min gap-6">
+      <h1 class="text-5xl">
+        <% if (isUpdating) { -%>
+        Updating Book Copy Entry
+        <% } else { -%>
+        New Book Copy Entry
+        <% } -%>
+      </h1>
+
+      <%# No way to disable button without JS, so here it is... -%>
+      <script type="module">
+        let form = document.querySelector("form[method=post]");
+        form?.addEventListener("input", () => {
+          let invalidForm = document.querySelector("form[method=post]:invalid");
+          let submit = form.querySelector("button[type=submit]");
+          if (submit === null) return;
+          submit.disabled = invalidForm !== null;
+        });
+        form?.dispatchEvent(new Event("input"));
+      </script>
+      <form
+        method="post"
+        class="grid gap-3 justify-items-start [&:invalid>button[type=submit]]:opacity-50 [&:invalid>button[type=submit]]:cursor-not-allowed"
+      >
+        <label class="w-full grid gap-1">
+          <strong>Book:</strong>
+          <select
+            name="bookId"
+            required
+            class="border px-2 py-1 bg-transparent invalid:text-gray-400 [&>*:not(:first-child)]:text-[initial]"
+          >
+            <%# prettier-ignore -%>
+            <% var hasBookSelected = books.some(({isSelected}) => isSelected) -%>
+            <%- include('../components/select-option-default.ejs', {text: 'Select a book:', isSelected: !hasBookSelected}) -%>
+            <% books.forEach(({id, title, isSelected}) => { -%>
+            <%- include('../components/select-option.ejs', {value: id, text: title, isSelected}) -%>
+            <% }) -%>
+          </select>
+        </label>
+        <label class="w-full grid gap-1">
+          <strong>Imprint:</strong>
+          <input
+            type="text"
+            name="imprint"
+            placeholder="Publisher and date information"
+            value="<%= defaultImprint -%>"
+            required
+            min="1"
+            class="border px-2 py-1"
+          />
+        </label>
+        <label class="w-full grid gap-1">
+          <strong>Date when book available:</strong>
+          <input
+            type="date"
+            name="dueBack"
+            value="<%= defaultDueBack -%>"
+            class="border px-2 py-1"
+          />
+        </label>
+        <label class="w-full grid gap-1">
+          <strong>Status:</strong>
+          <select
+            name="status"
+            required
+            class="border px-2 py-1 bg-transparent invalid:text-gray-400 [&>*:not(:first-child)]:text-[initial]"
+          >
+            <%# prettier-ignore -%>
+            <% var hasStatusSelected = statuses.some(({isSelected}) => isSelected) -%>
+            <%- include('../components/select-option-default.ejs', {text: 'Select a status:', isSelected: !hasStatusSelected}) -%>
+            <% statuses.forEach(({status, isSelected}) => { -%>
+            <%- include('../components/select-option.ejs', {value: status, text: status, isSelected}) -%>
+            <% }) -%>
+          </select>
+        </label>
+
+        <%- include('../components/errors.ejs', {errors}) -%>
+
+        <button type="submit" class="rounded bg-blue-600 text-white px-5 py-2">
+          Submit
+        </button>
+      </form>
+    </main>
+  </body>
+</html>

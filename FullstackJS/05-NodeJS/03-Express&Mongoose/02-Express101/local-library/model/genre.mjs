@@ -37,3 +37,23 @@ export async function getGenreName(/** @type {string} */ id) {
   const res = await query.exec();
   return res?.name ?? null;
 }
+
+export async function getGenreByName(/** @type {string} */ name) {
+  const query = Genre.findOne({ name }).lean();
+  return await query.exec();
+}
+
+export async function createGenre(/** @type {string} */ name) {
+  return new Genre({ name }).save();
+}
+
+export async function deleteGenre(/** @type {string} */ id) {
+  await Genre.findByIdAndRemove(id);
+}
+
+export async function updateGenre(
+  /** @type {string} */ id,
+  /** @type {string} */ name,
+) {
+  return Genre.findByIdAndUpdate(id, { name }, {});
+}

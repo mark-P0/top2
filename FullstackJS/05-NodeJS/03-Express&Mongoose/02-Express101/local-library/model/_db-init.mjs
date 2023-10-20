@@ -1,5 +1,8 @@
+import _debug from "debug";
 import "dotenv/config";
 import mongoose from "mongoose";
+
+const debug = _debug("db");
 
 /**
  * Set `strictQuery: false` to globally opt into filtering by properties that aren't in the schema
@@ -17,9 +20,9 @@ const { uri } = process.env;
 
 /** Wait for database to connect, logging an error if there is a problem */
 try {
-  console.log(`Connecting to ${uri}...`);
+  debug(`Connecting to ${uri}...`);
   await mongoose.connect(uri);
-  console.log(`Connected.`);
+  debug(`Connected.`);
 } catch (error) {
-  console.log(error);
+  debug(error);
 }

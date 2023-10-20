@@ -69,3 +69,41 @@ export async function getBooksByAuthor(/** @type {string} */ id) {
   const query = Book.find({ author: id }).sort({ title: 1 });
   return query.exec();
 }
+
+export async function createBook(
+  /** @type {string} */ title,
+  /** @type {string} */ authorId,
+  /** @type {string} */ summary,
+  /** @type {string} */ isbn,
+  /** @type {string[]} */ genreIds,
+) {
+  const author = authorId;
+  const genre = genreIds;
+  return new Book({ title, author, summary, isbn, genre }).save();
+}
+
+export async function getBooks() {
+  const query = Book.find({}).sort({ title: 1 }).lean();
+  return await query.exec();
+}
+
+export async function deleteBook(/** @type {string} */ id) {
+  await Book.findByIdAndRemove(id);
+}
+
+export async function updateBook(
+  /** @type {string} */ id,
+  /** @type {string} */ title,
+  /** @type {string} */ authorId,
+  /** @type {string} */ summary,
+  /** @type {string} */ isbn,
+  /** @type {string[]} */ genreIds,
+) {
+  const author = authorId;
+  const genre = genreIds;
+  return Book.findByIdAndUpdate(
+    id,
+    { title, author, summary, isbn, genre },
+    {},
+  );
+}

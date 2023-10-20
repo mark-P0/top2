@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include('../components/head.ejs') -%>
+
+    <% if (isUpdating) { -%>
+    <title>Updating "<%= defaultTitle -%>" | Local Library</title>
+    <% } else { -%>
+    <title>New Book | Local Library</title>
+    <% } -%>
+  </head>
+  <body class="grid md:grid-cols-[1fr_4fr] gap-6 p-6">
+    <aside><%- include('../components/nav-links.ejs') -%></aside>
+
+    <main class="grid auto-rows-min gap-6">
+      <h1 class="text-5xl">
+        <% if (isUpdating) { -%>
+        Updating <span class="italic"><%= defaultTitle -%></span>
+        <% } else { -%>
+        New Book Entry
+        <% } -%>
+      </h1>
+
+      <%# No way to disable button without JS, so here it is... -%>
+      <script type="module">
+        let form = document.querySelector("form[method=post]");
+        form?.addEventListener("input", () => {
+          let invalidForm = document.querySelector("form[method=post]:invalid");
+          let submit = form.querySelector("button[type=submit]");
+          if (submit === null) return;
+          submit.disabled = invalidForm !== null;
+        });
+        form?.dispatchEvent(new Event("input"));
+      </script>
+      <form
+        method="post"
+        class="grid gap-3 justify-items-start [&:invalid>button[type=submit]]:opacity-50 [&:invalid>button[type=submit]]:cursor-not-allowed"
+      >
+        <label class="w-full grid gap-1">
+          <strong>Title:</strong>
+          <input
+            type="text"
+            name="title"
+            placeholder="e.g. Pride and Prejudice"
+            value="<%= defaultTitle -%>"
+            required
+            min="1"
+            class="border px-2 py-1"
+          />
+        </label>
+
+        <label class="w-full grid gap-1">
+          <strong>Author:</strong>
+          <select
+            name="authorId"
+            required
+            class="border px-2 py-1 bg-transparent invalid:text-gray-400 [&>*:not(:first-child)]:text-[initial]"
+          >
+            <%# prettier-ignore -%>
+            <% var hasAuthorSelected = authors.some(({isSelected}) => isSelected) -%>
+            <%- include('../components/select-option-default.ejs', {text: 'Select an author:', isSelected: !hasAuthorSelected}) -%>
+            <% authors.forEach(({id, name, isSelected}) => { -%>
+            <%- include('../components/select-option.ejs', {value: id, text: name, isSelected}) -%>
+            <% }) -%>
+          </select>
+        </label>
+        <label class="w-full grid gap-1">
+          <strong>Summary:</strong>
+          <%# prettier-ignore -%>
+          <textarea
+            cols="30"
+            rows="10"
+            name="summary"
+            placeholder="An overview of the book contents"
+            required
+            minlength="1"
+            class="border px-2 py-1"
+          ><%= defaultSummary -%></textarea>
+        </label>
+        <label class="w-full grid gap-1">
+          <strong>ISBN:</strong>
+          <input
+            type="number"
+            name="isbn"
+            placeholder="e.g. 1234567890123"
+            value="<%= defaultISBN -%>"
+            required
+            min="1000000000000"
+            max="9999999999999"
+            class="border px-2 py-1"
+          />
+        </label>
+        <fieldset class="w-full grid gap-1">
+          <legend class="float-left">
+            <strong>Genre:</strong>
+          </legend>
+          <div class="flex flex-wrap gap-x-3">
+            <% genres.forEach(({id, name, isChecked}) => { -%>
+            <label>
+              <%- include('../components/input-checkbox.ejs', {name: 'genreIds', value: id, isChecked}) -%>
+              <%= name -%>
+            </label>
+            <% }) -%>
+          </div>
+        </fieldset>
+
+        <%- include('../components/errors.ejs', {errors}) -%>
+
+        <button type="submit" class="rounded bg-blue-600 text-white px-5 py-2">
+          Submit
+        </button>
+      </form>
+    </main>
+  </body>
+</html>
