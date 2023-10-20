@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include('./components/head.ejs') %>
+
+    <title>Books | Local Library</title>
+  </head>
+  <body class="grid md:grid-cols-[1fr_4fr] gap-6 p-6">
+    <aside><%- include('./components/nav-links.ejs') %></aside>
+
+    <main class="grid auto-rows-min gap-6">
+      <h1 class="text-5xl">List of Books</h1>
+
+      <% if (books?.length > 0) { %>
+
+      <ul>
+        <% books.forEach(({title, name, url}) => {%>
+        <li>
+          <%- include('./components/link.ejs', {href: url, text: title}) %>
+          (<%= name %>)
+        </li>
+        <% }) %>
+      </ul>
+
+      <% } else { %>
+
+      <p>There are no books.</p>
+
+      <% } %>
+    </main>
+  </body>
+</html>

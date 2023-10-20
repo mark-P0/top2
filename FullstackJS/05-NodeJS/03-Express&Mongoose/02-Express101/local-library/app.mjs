@@ -1,9 +1,5 @@
-import compression from "compression";
 import cookieParser from "cookie-parser";
-import _debug from "debug";
 import express from "express";
-import RateLimit from "express-rate-limit";
-import helmet from "helmet";
 import createError from "http-errors";
 import logger from "morgan";
 import path from "path";
@@ -16,32 +12,10 @@ import { GenreRouter } from "./routes/genre.mjs";
 import { IndexRouter } from "./routes/index.mjs";
 import { UsersRouter } from "./routes/users.mjs";
 
-const debug = _debug("app");
-
 /** https://stackoverflow.com/a/50052194 */
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
 export const app = express();
-
-/** Rate limiter */
-app.use(
-  RateLimit({
-    /* Maximum of 20 requests per minute */
-    windowMs: 1 * 60 * 1000, // 1 minute
-    max: 20,
-  }),
-);
-/**
- * Add `helmet` to the middleware chain
- * Set CSP headers to allow external scripts to be served
- */
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      "script-src": ["'self'", "cdn.tailwindcss.com"],
-    },
-  }),
-);
 
 /** view engine setup */
 app.set("views", path.join(__dirname, "views"));
@@ -51,10 +25,6 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-/** gzip/deflate compression */
-app.use(compression());
-
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", IndexRouter);
@@ -76,11 +46,7 @@ app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
 
-  debug(err.message);
-  debug(err);
-
   /* render the error page */
   res.status(err.status || 500);
-  // res.render("error");
-  res.render("404.ejs");
+  res.render("error");
 });

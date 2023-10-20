@@ -3,12 +3,6 @@ import "./_db-init.mjs";
 import { formatDate } from "./utilities.mjs";
 
 const { ObjectId } = Schema.Types;
-export const AvailabilityStatus = {
-  Available: "Available",
-  Maintenance: "Maintenance",
-  Loaned: "Loaned",
-  Reserved: "Reserved",
-};
 
 /** @typedef {import('./book.mjs').TBook} TBook */
 
@@ -24,8 +18,8 @@ const BookInstanceSchema = new Schema(
     status: {
       type: String,
       required: true,
-      enum: Object.values(AvailabilityStatus),
-      default: AvailabilityStatus.Maintenance,
+      enum: ["Available", "Maintenance", "Loaned", "Reserved"],
+      default: "Maintenance",
     },
     due_back: { type: Date, default: Date.now },
   },
@@ -55,9 +49,7 @@ export async function countBookCopies() {
 }
 
 export async function countAvailableBookCopies() {
-  const query = BookInstance.countDocuments({
-    status: AvailabilityStatus.Available,
-  });
+  const query = BookInstance.countDocuments({ status: "Available" });
   return await query.exec();
 }
 
@@ -82,31 +74,4 @@ export async function getBookCopy(/** @type {string} */ id) {
 
   const res = await qPopulate.exec();
   return res ?? null;
-}
-
-export async function createBookCopy(
-  /** @type {string} */ bookId,
-  /** @type {Date | undefined} */ due_back,
-  /** @type {string} */ imprint,
-  /** @type {string} */ status,
-) {
-  return new BookInstance({ book: bookId, due_back, imprint, status }).save();
-}
-
-export async function deleteBookCopy(/** @type {string} */ id) {
-  await BookInstance.findByIdAndRemove(id);
-}
-
-export async function updateBookCopy(
-  /** @type {string} */ id,
-  /** @type {string} */ bookId,
-  /** @type {Date | undefined} */ due_back,
-  /** @type {string} */ imprint,
-  /** @type {string} */ status,
-) {
-  return BookInstance.findByIdAndUpdate(
-    id,
-    { book: bookId, due_back, imprint, status },
-    {},
-  );
 }
